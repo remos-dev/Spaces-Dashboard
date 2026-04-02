@@ -8,65 +8,71 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #333; }
+
   header {
     background: linear-gradient(135deg, #1a3a6b 0%, #2563b0 100%);
     color: white; padding: 28px 36px;
   }
   header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.3px; }
-  header p { font-size: 13px; opacity: 0.82; margin-top: 5px; }
+  header p  { font-size: 13px; opacity: 0.82; margin-top: 5px; }
 
+  /* ── KPI row ── */
   .kpi-row {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     padding: 24px 36px 0;
   }
   .kpi {
     background: white; border-radius: 10px; padding: 20px 22px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    border-top: 4px solid #2563b0;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
-  .kpi.green { border-top-color: #22c55e; }
-  .kpi.orange { border-top-color: #f97316; }
-  .kpi.red { border-top-color: #ef4444; }
-  .kpi label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: #888; }
-  .kpi .val { font-size: 28px; font-weight: 700; color: #1a3a6b; margin-top: 6px; }
-  .kpi .sub { font-size: 12px; color: #6b7280; margin-top: 4px; }
-  .kpi .badge { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 4px; padding: 2px 7px; margin-top: 6px; }
-  .badge.up { background: #dcfce7; color: #16a34a; }
+  .kpi.blue   { border-top: 4px solid #2563b0; }
+  .kpi.green  { border-top: 4px solid #16a34a; }
+  .kpi.orange { border-top: 4px solid #f97316; }
+  .kpi.red    { border-top: 4px solid #ef4444; }
+  .kpi label  { font-size: 11px; text-transform: uppercase; letter-spacing: .7px; color: #888; }
+  .kpi .val   { font-size: 28px; font-weight: 700; color: #1a3a6b; margin-top: 6px; }
+  .kpi .sub   { font-size: 12px; color: #6b7280; margin-top: 4px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 4px; padding: 2px 7px; margin-top: 6px; }
+  .badge.up   { background: #dcfce7; color: #16a34a; }
   .badge.down { background: #fee2e2; color: #dc2626; }
+  .badge.neu  { background: #dbeafe; color: #1d4ed8; }
 
+  /* ── chart cards ── */
   .charts-row {
     display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
     padding: 20px 36px 0;
   }
   .chart-card {
     background: white; border-radius: 10px; padding: 22px 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
   .chart-card.full { grid-column: 1 / -1; }
   .chart-card h2 { font-size: 14px; font-weight: 600; color: #1a3a6b; margin-bottom: 16px; }
-  .chart-wrap { position: relative; height: 240px; }
-  .chart-wrap.tall { height: 280px; }
+  .chart-wrap          { position: relative; height: 240px; }
+  .chart-wrap.tall     { height: 290px; }
 
+  /* ── table ── */
   .table-section { padding: 20px 36px 36px; }
   .table-section h2 { font-size: 14px; font-weight: 600; color: #1a3a6b; margin-bottom: 12px; }
   table { width: 100%; border-collapse: collapse; background: white;
-    border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); font-size: 13px; }
-  th { background: #1a3a6b; color: white; padding: 11px 14px; text-align: left; font-size: 12px; letter-spacing: 0.4px; }
+    border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); font-size: 13px; }
+  th { background: #1a3a6b; color: white; padding: 11px 14px; text-align: left; font-size: 12px; letter-spacing: .4px; }
   td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: #f8faff; }
-  .occ-bar { height: 7px; background: #e5e7eb; border-radius: 4px; width: 100%; min-width: 80px; margin-top: 4px; }
-  .occ-fill { height: 100%; border-radius: 4px; background: #2563b0; }
-  .occ-fill.low { background: #ef4444; }
-  .occ-fill.mid { background: #f97316; }
-  .occ-fill.good { background: #22c55e; }
+  .occ-bar  { height: 7px; background: #e5e7eb; border-radius: 4px; width: 100%; min-width: 80px; margin-top: 4px; }
+  .occ-fill { height: 100%; border-radius: 4px; }
+  .occ-fill.high { background: #16a34a; }
+  .occ-fill.mid  { background: #f97316; }
+  .occ-fill.low  { background: #ef4444; }
   td.num { text-align: right; font-variant-numeric: tabular-nums; }
   .yr-tag { display: inline-block; font-size: 10px; font-weight: 600; border-radius: 3px; padding: 1px 5px; }
   .yr25 { background: #dbeafe; color: #1d4ed8; }
   .yr26 { background: #fce7f3; color: #9d174d; }
   .yr24 { background: #f3f4f6; color: #4b5563; }
+  .peak-row td { background: #f0fdf4 !important; font-weight: 600; }
 
-  .note { padding: 0 36px 24px; font-size: 12px; color: #6b7280; }
+  .note { padding: 0 36px 28px; font-size: 12px; color: #6b7280; line-height: 1.7; }
   .note span { color: #f97316; font-weight: 600; }
 </style>
 </head>
@@ -74,13 +80,13 @@
 
 <header>
   <h1>Regus Group — Business Center 05102</h1>
-  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy & Revenue Analysis &nbsp;·&nbsp; Dec 2024 – Feb 2026</p>
+  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy &amp; Revenue Analysis &nbsp;·&nbsp; Dec 2024 – Feb 2026</p>
 </header>
 
-<!-- KPI Row -->
+<!-- ── KPI Row ───────────────────────────────────────────────────────────── -->
 <div class="kpi-row">
-  <div class="kpi">
-    <label>2025 Full-Year Revenue</label>
+  <div class="kpi blue">
+    <label>FY 2025 Gross Revenue</label>
     <div class="val">$924,396</div>
     <div class="sub">Avg $77,033 / month</div>
   </div>
@@ -91,33 +97,33 @@
     <span class="badge up">▲ Best 2025: Mar $81,501</span>
   </div>
   <div class="kpi orange">
-    <label>Average Vacancy Rate (2025)</label>
+    <label>Avg Vacancy Rate (FY 2025)</label>
     <div class="val">40.1%</div>
     <div class="sub">Avg Occupancy: 59.9%</div>
-    <span class="badge down">▼ Below 60% half the year</span>
+    <span class="badge down">▼ Below 60% for 7 of 12 months</span>
   </div>
   <div class="kpi red">
-    <label>Peak Vacancy Month (2025)</label>
+    <label>Peak Vacancy Month (FY 2025)</label>
     <div class="val">44.4%</div>
-    <div class="sub">September 2025 (184 / 330 occ.)</div>
-    <span class="badge down">▲ 55.64% occupancy</span>
+    <div class="sub">September 2025 — 184 / 330 occ.</div>
+    <span class="badge down">▼ Lowest occupancy on record</span>
   </div>
 </div>
 
-<!-- Charts Row 1 -->
+<!-- ── Revenue Bar ───────────────────────────────────────────────────────── -->
 <div class="charts-row">
   <div class="chart-card full">
-    <h2>Monthly Gross Revenue  (Dec 2024 – Feb 2026)</h2>
+    <h2>Monthly Gross Revenue &nbsp;(Dec 2024 – Feb 2026) &nbsp;·&nbsp; <span style="color:#16a34a">■</span> Peak &nbsp;<span style="color:#22c55e">■</span> Strong (&gt;$81K) &nbsp;<span style="color:#2563b0">■</span> Normal &nbsp;<span style="color:#ef4444">■</span> Weak (&lt;$74K)</h2>
     <div class="chart-wrap tall">
       <canvas id="revChart"></canvas>
     </div>
   </div>
 </div>
 
-<!-- Charts Row 2 -->
+<!-- ── Occupancy + Workstations ──────────────────────────────────────────── -->
 <div class="charts-row">
   <div class="chart-card">
-    <h2>Workstation Occupancy % vs Vacancy %</h2>
+    <h2>Workstation Occupancy % vs Vacancy % (months with occupancy data)</h2>
     <div class="chart-wrap">
       <canvas id="occChart"></canvas>
     </div>
@@ -130,7 +136,7 @@
   </div>
 </div>
 
-<!-- Charts Row 3 -->
+<!-- ── Scatter + YoY ─────────────────────────────────────────────────────── -->
 <div class="charts-row">
   <div class="chart-card">
     <h2>Revenue vs. Occupancy % — Correlation</h2>
@@ -139,14 +145,14 @@
     </div>
   </div>
   <div class="chart-card">
-    <h2>Year-over-Year Comparison (Jan & Feb)</h2>
+    <h2>Year-over-Year Revenue Comparison (Jan &amp; Feb)</h2>
     <div class="chart-wrap">
       <canvas id="yoyChart"></canvas>
     </div>
   </div>
 </div>
 
-<!-- Table -->
+<!-- ── Monthly Detail Table ──────────────────────────────────────────────── -->
 <div class="table-section">
   <h2>Monthly Detail</h2>
   <table>
@@ -154,7 +160,7 @@
       <tr>
         <th>Period</th>
         <th>Gross Revenue</th>
-        <th>Total Workstations</th>
+        <th>Total WS</th>
         <th>Occupied</th>
         <th>Available</th>
         <th>Occupancy %</th>
@@ -166,247 +172,183 @@
 </div>
 
 <div class="note">
-  * February 2026 report uses a revised format including bad debt ($2,673.63) and gross monthly rent calculation; occupancy data not reported that month.<br>
-  * Sellable workstation capacity expanded from <span>323 → 337</span> over the period (+4.3%), reflecting suite additions.
+  * February 2026 report uses a revised format including bad debt ($2,673.63) and a gross monthly rent calculation; occupancy data not reported that month.<br>
+  * Sellable workstation capacity expanded from <span>323 → 337</span> over the period (+4.3%), reflecting suite additions in May–June 2025 and November 2025.
 </div>
 
 <script>
+// ── Data ─────────────────────────────────────────────────────────────────────
 const data = [
-  { month: "Dec-24", revenue: 71228.96,  total: 323, occ: 193, avail: 124, occPct: 61.70, vacPct: 38.30, yr: 24 },
-  { month: "Jan-25", revenue: 74023.56,  total: 323, occ: 194, avail: 129, occPct: 60.06, vacPct: 39.94, yr: 25 },
-  { month: "Feb-25", revenue: 75625.71,  total: 323, occ: 203, avail: 120, occPct: 62.72, vacPct: 37.28, yr: 25 },
-  { month: "Mar-25", revenue: 81500.84,  total: 323, occ: 199, avail: 124, occPct: 61.63, vacPct: 38.37, yr: 25 },
-  { month: "Apr-25", revenue: 75738.46,  total: 323, occ: 204, avail: 119, occPct: 63.05, vacPct: 36.95, yr: 25 },
-  { month: "May-25", revenue: 79122.67,  total: 329, occ: 211, avail: 118, occPct: 64.05, vacPct: 35.95, yr: 25 },
-  { month: "Jun-25", revenue: 81199.91,  total: 330, occ: 199, avail: 131, occPct: 60.22, vacPct: 39.78, yr: 25 },
-  { month: "Jul-25", revenue: 73622.45,  total: 330, occ: 190, avail: 140, occPct: 57.58, vacPct: 42.42, yr: 25 },
-  { month: "Aug-25", revenue: 72601.45,  total: 330, occ: 184, avail: 146, occPct: 55.80, vacPct: 44.20, yr: 25 },
-  { month: "Sep-25", revenue: 74484.92,  total: 330, occ: 184, avail: 146, occPct: 55.64, vacPct: 44.36, yr: 25 },
-  { month: "Oct-25", revenue: 78748.50,  total: 330, occ: 194, avail: 136, occPct: 58.73, vacPct: 41.27, yr: 25 },
-  { month: "Nov-25", revenue: 79729.59,  total: 334, occ: 195, avail: 139, occPct: 58.38, vacPct: 41.62, yr: 25 },
-  { month: "Dec-25", revenue: 77997.80,  total: 337, occ: 197, avail: 140, occPct: 58.60, vacPct: 41.40, yr: 25 },
-  { month: "Jan-26", revenue: 79945.58,  total: 337, occ: 205, avail: 132, occPct: 60.72, vacPct: 39.28, yr: 26 },
-  { month: "Feb-26", revenue: 83684.22,  total: null, occ: null, avail: null, occPct: null, vacPct: null, yr: 26, note: true },
+  { month:"Dec-24", revenue:71228.96, total:323, occ:193, avail:124, occPct:61.70, vacPct:38.30, yr:24 },
+  { month:"Jan-25", revenue:74023.56, total:323, occ:194, avail:129, occPct:60.06, vacPct:39.94, yr:25 },
+  { month:"Feb-25", revenue:75625.71, total:323, occ:203, avail:120, occPct:62.72, vacPct:37.28, yr:25 },
+  { month:"Mar-25", revenue:81500.84, total:323, occ:199, avail:124, occPct:61.63, vacPct:38.37, yr:25 },
+  { month:"Apr-25", revenue:75738.46, total:323, occ:204, avail:119, occPct:63.05, vacPct:36.95, yr:25 },
+  { month:"May-25", revenue:79122.67, total:329, occ:211, avail:118, occPct:64.05, vacPct:35.95, yr:25 },
+  { month:"Jun-25", revenue:81199.91, total:330, occ:199, avail:131, occPct:60.22, vacPct:39.78, yr:25 },
+  { month:"Jul-25", revenue:73622.45, total:330, occ:190, avail:140, occPct:57.58, vacPct:42.42, yr:25 },
+  { month:"Aug-25", revenue:72601.45, total:330, occ:184, avail:146, occPct:55.80, vacPct:44.20, yr:25 },
+  { month:"Sep-25", revenue:74484.92, total:330, occ:184, avail:146, occPct:55.64, vacPct:44.36, yr:25 },
+  { month:"Oct-25", revenue:78748.50, total:330, occ:194, avail:136, occPct:58.73, vacPct:41.27, yr:25 },
+  { month:"Nov-25", revenue:79729.59, total:334, occ:195, avail:139, occPct:58.38, vacPct:41.62, yr:25 },
+  { month:"Dec-25", revenue:77997.80, total:337, occ:197, avail:140, occPct:58.60, vacPct:41.40, yr:25 },
+  { month:"Jan-26", revenue:79945.58, total:337, occ:205, avail:132, occPct:60.72, vacPct:39.28, yr:26 },
+  { month:"Feb-26", revenue:83684.22, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
 ];
 
-const labels = data.map(d => d.month);
-const revenues = data.map(d => d.revenue);
-const occPcts = data.map(d => d.occPct);
-const vacPcts = data.map(d => d.vacPct);
+const maxRevenue = Math.max(...data.map(d => d.revenue));
+const labels     = data.map(d => d.month);
+const revenues   = data.map(d => d.revenue);
 
-// Color helpers
-const maxRev = Math.max(...revenues);
-const barColors = revenues.map(r => r === maxRev ? '#16a34a' : r >= 81000 ? '#22c55e' : r < 74000 ? '#ef4444' : '#2563b0');
+// ── Revenue bar chart ────────────────────────────────────────────────────────
+const barColors = revenues.map(r =>
+  r === maxRevenue ? '#16a34a' :
+  r >= 81000       ? '#22c55e' :
+  r <  74000       ? '#ef4444' : '#2563b0'
+);
 
-// ---- Revenue Chart ----
 new Chart(document.getElementById('revChart'), {
   type: 'bar',
   data: {
     labels,
-    datasets: [{
-      label: 'Gross Revenue',
-      data: revenues,
-      backgroundColor: barColors,
-      borderRadius: 4,
-      borderSkipped: false,
-    }]
+    datasets: [{ label: 'Gross Revenue', data: revenues, backgroundColor: barColors, borderRadius: 5, borderSkipped: false }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: ctx => ' $' + ctx.raw.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})
-        }
-      }
+      tooltip: { callbacks: { label: c => ' $' + c.raw.toLocaleString('en-US', { minimumFractionDigits:2 }) } }
     },
     scales: {
-      y: {
-        min: 60000,
-        ticks: {
-          callback: v => '$' + (v/1000).toFixed(0) + 'k',
-          font: { size: 11 }
-        },
-        grid: { color: '#f0f0f0' }
-      },
-      x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+      y: { min: 60000, ticks: { callback: v => '$'+(v/1000).toFixed(0)+'k', font:{size:11} }, grid:{color:'#f0f0f0'} },
+      x: { ticks: { font:{size:11} }, grid:{display:false} }
     }
   }
 });
 
-// ---- Occupancy / Vacancy Chart ----
-const occ2 = data.filter(d => d.occPct !== null);
+// ── Occupancy / Vacancy line chart ────────────────────────────────────────────
+const occData = data.filter(d => d.occPct !== null);
 new Chart(document.getElementById('occChart'), {
   type: 'line',
   data: {
-    labels: occ2.map(d => d.month),
+    labels: occData.map(d => d.month),
     datasets: [
-      {
-        label: 'Occupancy %',
-        data: occ2.map(d => d.occPct),
-        borderColor: '#2563b0',
-        backgroundColor: 'rgba(37,99,176,0.08)',
-        fill: true,
-        tension: 0.35,
-        pointRadius: 4,
-        pointBackgroundColor: '#2563b0',
-      },
-      {
-        label: 'Vacancy %',
-        data: occ2.map(d => d.vacPct),
-        borderColor: '#ef4444',
-        backgroundColor: 'rgba(239,68,68,0.07)',
-        fill: true,
-        tension: 0.35,
-        pointRadius: 4,
-        pointBackgroundColor: '#ef4444',
-      }
+      { label:'Occupancy %', data: occData.map(d => d.occPct), borderColor:'#2563b0', backgroundColor:'rgba(37,99,176,.09)',
+        fill:true, tension:.35, pointRadius:4, pointBackgroundColor:'#2563b0' },
+      { label:'Vacancy %',   data: occData.map(d => d.vacPct), borderColor:'#ef4444', backgroundColor:'rgba(239,68,68,.07)',
+        fill:true, tension:.35, pointRadius:4, pointBackgroundColor:'#ef4444' },
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'top', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: ctx => ' ' + ctx.raw.toFixed(2) + '%' } }
+      legend: { position:'top', labels:{font:{size:11}} },
+      tooltip: { callbacks: { label: c => ' '+c.raw.toFixed(2)+'%' } }
     },
     scales: {
-      y: { min: 30, max: 70, ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#f0f0f0' } },
-      x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+      y: { min:30, max:70, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{color:'#f0f0f0'} },
+      x: { ticks:{font:{size:11}}, grid:{display:false} }
     }
   }
 });
 
-// ---- Workstations Stacked Bar ----
+// ── Stacked workstations bar ──────────────────────────────────────────────────
 new Chart(document.getElementById('wsChart'), {
   type: 'bar',
   data: {
-    labels: occ2.map(d => d.month),
+    labels: occData.map(d => d.month),
     datasets: [
-      {
-        label: 'Occupied',
-        data: occ2.map(d => d.occ),
-        backgroundColor: '#2563b0',
-        borderRadius: 3,
-        borderSkipped: false,
-      },
-      {
-        label: 'Available (Vacant)',
-        data: occ2.map(d => d.avail),
-        backgroundColor: '#fca5a5',
-        borderRadius: 3,
-        borderSkipped: false,
-      }
+      { label:'Occupied',        data: occData.map(d => d.occ),   backgroundColor:'#2563b0', borderRadius:3, borderSkipped:false },
+      { label:'Available (Vacant)', data: occData.map(d => d.avail), backgroundColor:'#fca5a5', borderRadius:3, borderSkipped:false },
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'top', labels: { font: { size: 11 } } } },
+    plugins: { legend:{ position:'top', labels:{font:{size:11}} } },
     scales: {
-      x: { stacked: true, ticks: { font: { size: 11 } }, grid: { display: false } },
-      y: { stacked: true, ticks: { font: { size: 11 } }, grid: { color: '#f0f0f0' } }
+      x: { stacked:true, ticks:{font:{size:11}}, grid:{display:false} },
+      y: { stacked:true, ticks:{font:{size:11}}, grid:{color:'#f0f0f0'} }
     }
   }
 });
 
-// ---- Scatter: Revenue vs Occupancy ----
-const scatterData = occ2.filter(d => d.occPct !== null).map(d => ({ x: d.occPct, y: d.revenue, label: d.month }));
+// ── Scatter: Revenue vs Occupancy ─────────────────────────────────────────────
+const scatterPoints = occData.map(d => ({ x: d.occPct, y: d.revenue, label: d.month }));
 new Chart(document.getElementById('scatterChart'), {
   type: 'scatter',
   data: {
     datasets: [{
       label: 'Month',
-      data: scatterData,
-      backgroundColor: scatterData.map(d => {
-        if (d.x >= 63) return '#22c55e';
-        if (d.x <= 57) return '#ef4444';
-        return '#2563b0';
-      }),
-      pointRadius: 7,
-      pointHoverRadius: 9,
+      data: scatterPoints,
+      backgroundColor: scatterPoints.map(d => d.x >= 63 ? '#16a34a' : d.x <= 57 ? '#ef4444' : '#2563b0'),
+      pointRadius: 7, pointHoverRadius: 9,
     }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: ctx => `${ctx.raw.label}: ${ctx.raw.x.toFixed(2)}% occ / $${ctx.raw.y.toLocaleString()}`
-        }
-      }
+      legend: { display:false },
+      tooltip: { callbacks: { label: c => `${c.raw.label}: ${c.raw.x.toFixed(2)}% occ  /  $${c.raw.y.toLocaleString()}` } }
     },
     scales: {
-      x: {
-        title: { display: true, text: 'Occupancy %', font: { size: 11 } },
-        ticks: { callback: v => v + '%', font: { size: 11 } },
-        grid: { color: '#f0f0f0' }
-      },
-      y: {
-        title: { display: true, text: 'Revenue ($)', font: { size: 11 } },
-        ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'k', font: { size: 11 } },
-        grid: { color: '#f0f0f0' }
-      }
+      x: { title:{ display:true, text:'Occupancy %', font:{size:11} }, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{color:'#f0f0f0'} },
+      y: { title:{ display:true, text:'Revenue ($)',  font:{size:11} }, ticks:{ callback: v => '$'+(v/1000).toFixed(0)+'k', font:{size:11} }, grid:{color:'#f0f0f0'} }
     }
   }
 });
 
-// ---- YoY Chart ----
+// ── YoY comparison bar ────────────────────────────────────────────────────────
 new Chart(document.getElementById('yoyChart'), {
   type: 'bar',
   data: {
     labels: ['January', 'February'],
     datasets: [
-      {
-        label: '2025',
-        data: [74023.56, 75625.71],
-        backgroundColor: '#93c5fd',
-        borderRadius: 4,
-      },
-      {
-        label: '2026',
-        data: [79945.58, 83684.22],
-        backgroundColor: '#1a3a6b',
-        borderRadius: 4,
-      }
+      { label:'2025', data:[74023.56, 75625.71], backgroundColor:'#93c5fd', borderRadius:4 },
+      { label:'2026', data:[79945.58, 83684.22], backgroundColor:'#1a3a6b', borderRadius:4 },
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'top', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: ctx => ' $' + ctx.raw.toLocaleString('en-US', {minimumFractionDigits:2}) } }
+      legend: { position:'top', labels:{font:{size:11}} },
+      tooltip: { callbacks: { label: c => ' $'+c.raw.toLocaleString('en-US',{minimumFractionDigits:2}) } },
+      annotation: {}
     },
     scales: {
-      y: {
-        min: 60000,
-        ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'k', font: { size: 11 } },
-        grid: { color: '#f0f0f0' }
-      },
-      x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+      y: { min:60000, ticks:{ callback: v => '$'+(v/1000).toFixed(0)+'k', font:{size:11} }, grid:{color:'#f0f0f0'} },
+      x: { ticks:{font:{size:11}}, grid:{display:false} }
     }
   }
 });
 
-// ---- Table ----
+// ── Monthly detail table ──────────────────────────────────────────────────────
 const tbody = document.getElementById('tableBody');
+const fmtRev = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2});
+const fmtPct = n => n.toFixed(2) + '%';
+
 data.forEach(d => {
   const tr = document.createElement('tr');
-  const yrTag = d.yr === 25 ? 'yr25' : d.yr === 26 ? 'yr26' : 'yr24';
+  if (d.revenue === maxRevenue) tr.classList.add('peak-row');
+
+  const yrTag   = d.yr === 25 ? 'yr25' : d.yr === 26 ? 'yr26' : 'yr24';
   const yrLabel = d.yr === 25 ? '2025' : d.yr === 26 ? '2026' : '2024';
-  const occColor = d.occPct === null ? '' : d.occPct >= 63 ? 'good' : d.occPct >= 59 ? 'mid' : 'low';
-  const occBarHtml = d.occPct !== null
-    ? `${d.occPct.toFixed(2)}%<div class="occ-bar"><div class="occ-fill ${occColor}" style="width:${d.occPct}%"></div></div>`
+
+  // Occupancy colour band
+  const occClass = d.occPct === null ? '' : d.occPct >= 63 ? 'high' : d.occPct <= 57 ? 'low' : 'mid';
+  const occHtml = d.occPct !== null
+    ? `${fmtPct(d.occPct)}<div class="occ-bar"><div class="occ-fill ${occClass}" style="width:${d.occPct}%"></div></div>`
     : '—';
 
+  const peakStar = d.revenue === maxRevenue ? ' ★' : '';
+
   tr.innerHTML = `
-    <td><strong>${d.month}</strong> <span class="yr-tag ${yrTag}">${yrLabel}</span>${d.note ? ' <span style="color:#f97316;font-size:10px">*</span>' : ''}</td>
-    <td class="num">$${d.revenue.toLocaleString('en-US', {minimumFractionDigits:2})}</td>
-    <td class="num">${d.total !== null ? d.total : '—'}</td>
-    <td class="num">${d.occ !== null ? d.occ : '—'}</td>
-    <td class="num">${d.avail !== null ? d.avail : '—'}</td>
-    <td>${occBarHtml}</td>
-    <td class="num">${d.vacPct !== null ? d.vacPct.toFixed(2) + '%' : '—'}</td>
+    <td><strong>${d.month}</strong>${peakStar} <span class="yr-tag ${yrTag}">${yrLabel}</span>${d.note ? ' <span style="color:#f97316;font-size:10px">*</span>' : ''}</td>
+    <td class="num">${fmtRev(d.revenue)}</td>
+    <td class="num">${d.total  ?? '—'}</td>
+    <td class="num">${d.occ    ?? '—'}</td>
+    <td class="num">${d.avail  ?? '—'}</td>
+    <td>${occHtml}</td>
+    <td class="num">${d.vacPct !== null ? fmtPct(d.vacPct) : '—'}</td>
   `;
   tbody.appendChild(tr);
 });
