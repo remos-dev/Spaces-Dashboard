@@ -85,10 +85,10 @@
     <div class="sub">Avg $77,033 / month</div>
   </div>
   <div class="kpi green">
-    <label>Best Revenue Month (2025)</label>
-    <div class="val">$81,501</div>
-    <div class="sub">March 2025</div>
-    <span class="badge up">▲ Runner-up: Jun $81,200</span>
+    <label>Best Revenue Month (All Periods)</label>
+    <div class="val">$83,684</div>
+    <div class="sub">February 2026</div>
+    <span class="badge up">▲ Best 2025: Mar $81,501</span>
   </div>
   <div class="kpi orange">
     <label>Average Vacancy Rate (2025)</label>
@@ -195,7 +195,8 @@ const occPcts = data.map(d => d.occPct);
 const vacPcts = data.map(d => d.vacPct);
 
 // Color helpers
-const barColors = revenues.map(r => r >= 81000 ? '#22c55e' : r < 74000 ? '#ef4444' : '#2563b0');
+const maxRev = Math.max(...revenues);
+const barColors = revenues.map(r => r === maxRev ? '#16a34a' : r >= 81000 ? '#22c55e' : r < 74000 ? '#ef4444' : '#2563b0');
 
 // ---- Revenue Chart ----
 new Chart(document.getElementById('revChart'), {
