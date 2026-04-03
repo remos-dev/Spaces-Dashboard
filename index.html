@@ -54,23 +54,54 @@
   /* ── table ── */
   .table-section { padding: 20px 36px 36px; }
   .table-section h2 { font-size: 14px; font-weight: 600; color: #1a3a6b; margin-bottom: 12px; }
-  table { width: 100%; border-collapse: collapse; background: white;
-    border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); font-size: 13px; }
-  th { background: #1a3a6b; color: white; padding: 11px 14px; text-align: left; font-size: 12px; letter-spacing: .4px; }
-  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+  table {
+    width: 100%; border-collapse: collapse; background: white; table-layout: fixed;
+    border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); font-size: 13px;
+  }
+  col.c-period  { width: 110px; }
+  col.c-revenue { width: 140px; }
+  col.c-total   { width: 90px; }
+  col.c-occ     { width: 90px; }
+  col.c-avail   { width: 90px; }
+  col.c-occpct  { width: 180px; }
+  col.c-vacpct  { width: 100px; }
+
+  th {
+    background: #1a3a6b; color: white; padding: 10px 14px;
+    font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  th.r { text-align: right; }
+  th.c { text-align: center; }
+
+  td {
+    padding: 9px 14px; border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #f8faff; }
-  .occ-bar  { height: 7px; background: #e5e7eb; border-radius: 4px; width: 100%; min-width: 80px; margin-top: 4px; }
-  .occ-fill { height: 100%; border-radius: 4px; }
+  tr:nth-child(even) td { background: #fafbfd; }
+  tr:hover td { background: #eff6ff !important; }
+
+  td.num  { text-align: right;  font-variant-numeric: tabular-nums; }
+  td.ctr  { text-align: center; font-variant-numeric: tabular-nums; }
+
+  /* occupancy pill + inline bar */
+  .occ-cell { display: flex; flex-direction: column; gap: 4px; }
+  .occ-top  { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .occ-pct  { font-variant-numeric: tabular-nums; font-size: 13px; white-space: nowrap; }
+  .occ-bar  { flex: 1; height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+  .occ-fill { height: 100%; border-radius: 3px; }
   .occ-fill.high { background: #16a34a; }
   .occ-fill.mid  { background: #f97316; }
   .occ-fill.low  { background: #ef4444; }
-  td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .yr-tag { display: inline-block; font-size: 10px; font-weight: 600; border-radius: 3px; padding: 1px 5px; }
+
+  .yr-tag { display: inline-block; font-size: 10px; font-weight: 600; border-radius: 3px; padding: 1px 6px; margin-left: 4px; vertical-align: middle; }
   .yr25 { background: #dbeafe; color: #1d4ed8; }
   .yr26 { background: #fce7f3; color: #9d174d; }
   .yr24 { background: #f3f4f6; color: #4b5563; }
-  .peak-row td { background: #f0fdf4 !important; font-weight: 600; }
+  .peak-row td { background: #f0fdf4 !important; }
+  .peak-star { color: #16a34a; margin-left: 3px; }
 
   .note { padding: 0 36px 28px; font-size: 12px; color: #6b7280; line-height: 1.7; }
   .note span { color: #f97316; font-weight: 600; }
@@ -156,15 +187,24 @@
 <div class="table-section">
   <h2>Monthly Detail</h2>
   <table>
+    <colgroup>
+      <col class="c-period">
+      <col class="c-revenue">
+      <col class="c-total">
+      <col class="c-occ">
+      <col class="c-avail">
+      <col class="c-occpct">
+      <col class="c-vacpct">
+    </colgroup>
     <thead>
       <tr>
         <th>Period</th>
-        <th>Gross Revenue</th>
-        <th>Total WS</th>
-        <th>Occupied</th>
-        <th>Available</th>
+        <th class="r">Gross Revenue</th>
+        <th class="c">Total WS</th>
+        <th class="c">Occupied</th>
+        <th class="c">Available</th>
         <th>Occupancy %</th>
-        <th>Vacancy %</th>
+        <th class="r">Vacancy %</th>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
@@ -322,8 +362,8 @@ new Chart(document.getElementById('yoyChart'), {
 });
 
 // ── Monthly detail table ──────────────────────────────────────────────────────
-const tbody = document.getElementById('tableBody');
-const fmtRev = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2});
+const tbody  = document.getElementById('tableBody');
+const fmtRev = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
 const fmtPct = n => n.toFixed(2) + '%';
 
 data.forEach(d => {
@@ -333,22 +373,29 @@ data.forEach(d => {
   const yrTag   = d.yr === 25 ? 'yr25' : d.yr === 26 ? 'yr26' : 'yr24';
   const yrLabel = d.yr === 25 ? '2025' : d.yr === 26 ? '2026' : '2024';
 
-  // Occupancy colour band
   const occClass = d.occPct === null ? '' : d.occPct >= 63 ? 'high' : d.occPct <= 57 ? 'low' : 'mid';
-  const occHtml = d.occPct !== null
-    ? `${fmtPct(d.occPct)}<div class="occ-bar"><div class="occ-fill ${occClass}" style="width:${d.occPct}%"></div></div>`
-    : '—';
+  const occHtml  = d.occPct !== null
+    ? `<div class="occ-cell">
+         <div class="occ-top">
+           <span class="occ-pct">${fmtPct(d.occPct)}</span>
+           <div class="occ-bar"><div class="occ-fill ${occClass}" style="width:${d.occPct}%"></div></div>
+         </div>
+       </div>`
+    : '<span style="color:#9ca3af">—</span>';
 
-  const peakStar = d.revenue === maxRevenue ? ' ★' : '';
+  const peakStar = d.revenue === maxRevenue
+    ? '<span class="peak-star" title="Highest revenue in dataset">★</span>' : '';
+  const noteFlag = d.note
+    ? '<span style="color:#f97316;font-size:10px;margin-left:3px">*</span>' : '';
 
   tr.innerHTML = `
-    <td><strong>${d.month}</strong>${peakStar} <span class="yr-tag ${yrTag}">${yrLabel}</span>${d.note ? ' <span style="color:#f97316;font-size:10px">*</span>' : ''}</td>
+    <td><strong>${d.month}</strong>${peakStar}<span class="yr-tag ${yrTag}">${yrLabel}</span>${noteFlag}</td>
     <td class="num">${fmtRev(d.revenue)}</td>
-    <td class="num">${d.total  ?? '—'}</td>
-    <td class="num">${d.occ    ?? '—'}</td>
-    <td class="num">${d.avail  ?? '—'}</td>
+    <td class="ctr">${d.total  ?? '<span style="color:#9ca3af">—</span>'}</td>
+    <td class="ctr">${d.occ    ?? '<span style="color:#9ca3af">—</span>'}</td>
+    <td class="ctr">${d.avail  ?? '<span style="color:#9ca3af">—</span>'}</td>
     <td>${occHtml}</td>
-    <td class="num">${d.vacPct !== null ? fmtPct(d.vacPct) : '—'}</td>
+    <td class="num">${d.vacPct !== null ? fmtPct(d.vacPct) : '<span style="color:#9ca3af">—</span>'}</td>
   `;
   tbody.appendChild(tr);
 });
