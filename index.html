@@ -19,101 +19,96 @@
 
   /* ── KPI strip ── */
   .kpi-row {
-    display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     padding: 24px 36px 0;
   }
-  .kpi { background:#fff; border-radius:10px; padding:18px 20px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
-  .kpi.blue   { border-top:4px solid #2563b0; }
-  .kpi.green  { border-top:4px solid #16a34a; }
-  .kpi.orange { border-top:4px solid #f97316; }
-  .kpi.red    { border-top:4px solid #ef4444; }
-  .kpi label  { font-size:10px; text-transform:uppercase; letter-spacing:.8px; color:#9ca3af; display:block; }
-  .kpi .val   { font-size:26px; font-weight:700; color:#1a3a6b; margin-top:5px; line-height:1.15; }
-  .kpi .sub   { font-size:12px; color:#6b7280; margin-top:4px; }
-  .badge { display:inline-block; font-size:11px; font-weight:600; border-radius:4px; padding:2px 7px; margin-top:6px; }
-  .badge.up   { background:#dcfce7; color:#16a34a; }
-  .badge.down { background:#fee2e2; color:#dc2626; }
-  .badge.neu  { background:#dbeafe; color:#1d4ed8; }
+  .kpi { background: #fff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .kpi.blue   { border-top: 4px solid #2563b0; }
+  .kpi.green  { border-top: 4px solid #16a34a; }
+  .kpi.orange { border-top: 4px solid #f97316; }
+  .kpi.red    { border-top: 4px solid #ef4444; }
+  .kpi label  { font-size: 10px; text-transform: uppercase; letter-spacing: .8px; color: #9ca3af; display: block; }
+  .kpi .val   { font-size: 26px; font-weight: 700; color: #1a3a6b; margin-top: 5px; line-height: 1.15; }
+  .kpi .sub   { font-size: 12px; color: #6b7280; margin-top: 4px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 4px; padding: 2px 7px; margin-top: 6px; }
+  .badge.up   { background: #dcfce7; color: #16a34a; }
+  .badge.down { background: #fee2e2; color: #dc2626; }
+  .badge.neu  { background: #dbeafe; color: #1d4ed8; }
 
   /* ── Chart cards ── */
-  .charts-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 36px 0; }
-  .chart-card { background:#fff; border-radius:10px; padding:20px 22px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
-  .chart-card.full { grid-column:1/-1; }
-  .chart-card h2 { font-size:13px; font-weight:600; color:#1a3a6b; margin-bottom:14px; line-height:1.4; }
-  .legend-dots { font-size:11px; color:#6b7280; display:flex; gap:14px; flex-wrap:wrap; margin-top:-6px; margin-bottom:12px; }
-  .legend-dots span { display:flex; align-items:center; gap:4px; }
-  .dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
-  .chart-wrap      { position:relative; height:250px; }
-  .chart-wrap.tall { height:300px; }
+  .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px 36px 0; }
+  .chart-card { background: #fff; border-radius: 10px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .chart-card.full { grid-column: 1 / -1; }
+  .chart-card h2 { font-size: 13px; font-weight: 600; color: #1a3a6b; margin-bottom: 14px; line-height: 1.4; }
+  .legend-dots { font-size: 11px; color: #6b7280; display: flex; gap: 14px; flex-wrap: wrap; margin-top: -6px; margin-bottom: 12px; }
+  .legend-dots span { display: flex; align-items: center; gap: 4px; }
+  .dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .chart-wrap      { position: relative; height: 250px; }
+  .chart-wrap.tall { height: 300px; }
+  .chart-wrap.sm   { height: 200px; }
 
   /* ── Table ── */
-  .table-section { padding:20px 36px 36px; }
-  .table-section h2 { font-size:14px; font-weight:600; color:#1a3a6b; margin-bottom:12px; }
-  .tbl-wrap { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+  .table-section { padding: 20px 36px 36px; }
+  .table-section h2 { font-size: 14px; font-weight: 600; color: #1a3a6b; margin-bottom: 12px; }
+  .tbl-wrap { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
 
-  table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:13px; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
 
-  /* Column widths */
-  col.c-period   { width:9%;  }
-  col.c-gross    { width:13%; }
-  col.c-baddebt  { width:11%; }
-  col.c-netrev   { width:13%; }
-  col.c-total    { width:7%;  }
-  col.c-occ      { width:7%;  }
-  col.c-avail    { width:7%;  }
-  col.c-occpct   { width:18%; }
-  col.c-vacpct   { width:8%;  }
-  col.c-yoy      { width:7%;  }
+  col.c-period  { width: 9%;  }
+  col.c-gross   { width: 13%; }
+  col.c-baddebt { width: 11%; }
+  col.c-netrev  { width: 13%; }
+  col.c-total   { width: 7%;  }
+  col.c-occ     { width: 7%;  }
+  col.c-avail   { width: 7%;  }
+  col.c-occpct  { width: 18%; }
+  col.c-vacpct  { width: 8%;  }
+  col.c-yoy     { width: 7%;  }
 
   thead th {
-    background:#1a3a6b; color:#fff; padding:10px 12px;
-    font-size:11px; font-weight:600; letter-spacing:.4px;
-    text-transform:uppercase; white-space:nowrap;
+    background: #1a3a6b; color: #fff; padding: 10px 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: .4px;
+    text-transform: uppercase; white-space: nowrap;
   }
-  thead th.r { text-align:right; }
-  thead th.c { text-align:center; }
+  thead th.r { text-align: right; }
+  thead th.c { text-align: center; }
 
   tbody td {
-    padding:9px 12px; border-bottom:1px solid #f0f2f5;
-    vertical-align:middle; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    padding: 9px 12px; border-bottom: 1px solid #f0f2f5;
+    vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-  tbody tr:last-child td { border-bottom:none; }
-  tbody tr:nth-child(even) td { background:#f8fafd; }
-  tbody tr:hover td { background:#eff6ff !important; transition:background .1s; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) td { background: #f8fafd; }
+  tbody tr:hover td { background: #eff6ff !important; transition: background .1s; }
 
-  td.r { text-align:right;  font-variant-numeric:tabular-nums; }
-  td.c { text-align:center; font-variant-numeric:tabular-nums; }
+  td.r { text-align: right;  font-variant-numeric: tabular-nums; }
+  td.c { text-align: center; font-variant-numeric: tabular-nums; }
 
-  /* Period cell */
-  .period-cell { display:flex; align-items:center; gap:4px; flex-wrap:nowrap; }
-  .yr-pill { font-size:9px; font-weight:700; border-radius:3px; padding:1px 5px; text-transform:uppercase; letter-spacing:.3px; flex-shrink:0; }
-  .yr24 { background:#f3f4f6; color:#6b7280; }
-  .yr25 { background:#dbeafe; color:#1d4ed8; }
-  .yr26 { background:#fce7f3; color:#9d174d; }
-  .star { color:#16a34a; font-size:11px; }
-  .ast  { color:#f97316; font-size:10px; }
+  .period-cell { display: flex; align-items: center; gap: 4px; }
+  .yr-pill { font-size: 9px; font-weight: 700; border-radius: 3px; padding: 1px 5px; text-transform: uppercase; letter-spacing: .3px; flex-shrink: 0; }
+  .yr24 { background: #f3f4f6; color: #6b7280; }
+  .yr25 { background: #dbeafe; color: #1d4ed8; }
+  .yr26 { background: #fce7f3; color: #9d174d; }
+  .star { color: #16a34a; font-size: 11px; }
+  .ast  { color: #f97316; font-size: 10px; }
 
-  /* Inline occ bar */
-  .occ-wrap { display:flex; align-items:center; gap:8px; }
-  .occ-num  { width:52px; text-align:right; font-variant-numeric:tabular-nums; flex-shrink:0; font-size:13px; }
-  .bar-track { flex:1; height:7px; background:#e5e7eb; border-radius:4px; overflow:hidden; }
-  .bar-fill  { height:100%; border-radius:4px; }
-  .bar-fill.high { background:#16a34a; }
-  .bar-fill.mid  { background:#f97316; }
-  .bar-fill.low  { background:#ef4444; }
+  .occ-wrap { display: flex; align-items: center; gap: 8px; }
+  .occ-num  { width: 52px; text-align: right; font-variant-numeric: tabular-nums; flex-shrink: 0; font-size: 13px; }
+  .bar-track { flex: 1; height: 7px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+  .bar-fill  { height: 100%; border-radius: 4px; }
+  .bar-fill.high { background: #16a34a; }
+  .bar-fill.mid  { background: #f97316; }
+  .bar-fill.low  { background: #ef4444; }
 
-  /* Bad debt cell — subtle red tint when value present */
-  .bd-val { color:#b91c1c; font-variant-numeric:tabular-nums; }
+  .bd-val { color: #b91c1c; font-variant-numeric: tabular-nums; }
 
-  /* Row highlights */
-  .peak     td { background:#f0fdf4 !important; font-weight:500; }
-  .note-row td { background:#fffbeb !important; }
-
-  .na { color:#d1d5db; }
+  .peak     td { background: #f0fdf4 !important; font-weight: 500; }
+  .note-row td { background: #fffbeb !important; }
+  .na { color: #d1d5db; }
 
   /* ── Footnote ── */
-  .footnote { padding:0 36px 32px; font-size:11.5px; color:#6b7280; line-height:1.9; }
-  .footnote b { color:#f97316; }
+  .footnote { padding: 0 36px 32px; font-size: 11.5px; color: #6b7280; line-height: 1.9; }
+  .footnote b { color: #f97316; }
 </style>
 </head>
 <body>
@@ -189,11 +184,11 @@
   </div>
 </div>
 
-<!-- Bad Debt trend -->
+<!-- Bad Debt -->
 <div class="charts-row">
   <div class="chart-card full">
     <h2>2026 Gross Revenue vs. Revenue After Bad Debt &nbsp;(Feb – May 2026)</h2>
-    <div class="chart-wrap" style="height:200px"><canvas id="bdChart"></canvas></div>
+    <div class="chart-wrap sm"><canvas id="bdChart"></canvas></div>
   </div>
 </div>
 
@@ -235,7 +230,7 @@
 
 <div class="footnote">
   <span class="star">★</span> Highest gross revenue in the dataset &nbsp;|&nbsp;
-  <span class="ast">*</span> 2026 reports use revised format: include bad debt and percentage-rent calculation; occupancy data not reported &nbsp;|&nbsp;
+  <span class="ast">*</span> 2026 reports (Feb onward) use revised format: include bad debt and percentage-rent calculation; occupancy data not reported &nbsp;|&nbsp;
   Capacity expanded <b>323 → 337</b> workstations (+4.3%) between Jan and Dec 2025
 </div>
 
@@ -262,7 +257,6 @@ const data = [
   { month:"May-26", revenue:80349.06,  badDebt:4996.53, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
 ];
 
-// YoY prior-year revenue by month label
 const yoyPrior = {
   "Jan-26": 74023.56,
   "Feb-26": 75625.71,
@@ -271,16 +265,16 @@ const yoyPrior = {
   "May-26": 79122.67,
 };
 
-const maxRev  = Math.max(...data.map(d => d.revenue));
-const labels  = data.map(d => d.month);
+const maxRev   = Math.max(...data.map(d => d.revenue));
+const labels   = data.map(d => d.month);
 const revenues = data.map(d => d.revenue);
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-const $       = id => document.getElementById(id);
-const fmtD    = n  => '$' + n.toLocaleString('en-US', { minimumFractionDigits:2, maximumFractionDigits:2 });
-const fmtK    = n  => '$' + (n/1000).toFixed(0) + 'k';
-const fmtPct  = n  => n.toFixed(2) + '%';
-const na      = () => '<span class="na">—</span>';
+const $      = id => document.getElementById(id);
+const fmtD   = n  => '$' + n.toLocaleString('en-US', { minimumFractionDigits:2, maximumFractionDigits:2 });
+const fmtK   = n  => '$' + (n/1000).toFixed(0) + 'k';
+const fmtPct = n  => n.toFixed(2) + '%';
+const na     = () => '<span class="na">—</span>';
 
 Chart.defaults.font.family = "'Segoe UI', Arial, sans-serif";
 
@@ -305,8 +299,8 @@ new Chart($('revChart'), {
       tooltip: { callbacks: { label: c => ' ' + fmtD(c.raw) } }
     },
     scales: {
-      y: { min:60000, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{color:'#f0f0f0'} },
-      x: { ticks:{ font:{size:11} }, grid:{display:false} }
+      y: { min: 60000, ticks: { callback: v => fmtK(v), font:{size:11} }, grid: { color:'#f0f0f0' } },
+      x: { ticks: { font:{size:11} }, grid: { display:false } }
     }
   }
 });
@@ -329,12 +323,12 @@ new Chart($('occChart'), {
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position:'top', labels:{font:{size:11}} },
+      legend: { position:'top', labels:{ font:{size:11} } },
       tooltip: { callbacks: { label: c => ' ' + c.raw.toFixed(2) + '%' } }
     },
     scales: {
-      y: { min:30, max:70, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{color:'#f0f0f0'} },
-      x: { ticks:{ font:{size:11} }, grid:{display:false} }
+      y: { min:30, max:70, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{ color:'#f0f0f0' } },
+      x: { ticks:{ font:{size:11} }, grid:{ display:false } }
     }
   }
 });
@@ -351,10 +345,10 @@ new Chart($('wsChart'), {
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: { legend:{ position:'top', labels:{font:{size:11}} } },
+    plugins: { legend:{ position:'top', labels:{ font:{size:11} } } },
     scales: {
-      x: { stacked:true, ticks:{ font:{size:11} }, grid:{display:false} },
-      y: { stacked:true, ticks:{ font:{size:11} }, grid:{color:'#f0f0f0'} }
+      x: { stacked:true, ticks:{ font:{size:11} }, grid:{ display:false } },
+      y: { stacked:true, ticks:{ font:{size:11} }, grid:{ color:'#f0f0f0' } }
     }
   }
 });
@@ -377,13 +371,13 @@ new Chart($('scatterChart'), {
       tooltip: { callbacks: { label: c => `${c.raw.label}: ${c.raw.x.toFixed(2)}% · ${fmtD(c.raw.y)}` } }
     },
     scales: {
-      x: { title:{display:true, text:'Occupancy %', font:{size:11}}, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{color:'#f0f0f0'} },
-      y: { title:{display:true, text:'Revenue',     font:{size:11}}, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{color:'#f0f0f0'} }
+      x: { title:{ display:true, text:'Occupancy %', font:{size:11} }, ticks:{ callback: v => v+'%', font:{size:11} }, grid:{ color:'#f0f0f0' } },
+      y: { title:{ display:true, text:'Revenue',     font:{size:11} }, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{ color:'#f0f0f0' } }
     }
   }
 });
 
-// ── 5. YoY bar (Jan–Apr) ───────────────────────────────────────────────────────
+// ── 5. YoY bar ─────────────────────────────────────────────────────────────────
 new Chart($('yoyChart'), {
   type: 'bar',
   data: {
@@ -396,44 +390,41 @@ new Chart($('yoyChart'), {
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position:'top', labels:{font:{size:11}} },
+      legend: { position:'top', labels:{ font:{size:11} } },
       tooltip: { callbacks: { label: c => ' ' + fmtD(c.raw) } }
     },
     scales: {
-      y: { min:60000, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{color:'#f0f0f0'} },
-      x: { ticks:{ font:{size:11} }, grid:{display:false} }
+      y: { min:60000, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{ color:'#f0f0f0' } },
+      x: { ticks:{ font:{size:11} }, grid:{ display:false } }
     }
   }
 });
 
-// ── 6. Bad debt chart ──────────────────────────────────────────────────────────
-const bdMonths = data.filter(d => d.badDebt !== null);
+// ── 6. Bad debt stacked bar ────────────────────────────────────────────────────
+const bdRows = data.filter(d => d.badDebt !== null);
 new Chart($('bdChart'), {
   type: 'bar',
   data: {
-    labels: bdMonths.map(d => d.month),
+    labels: bdRows.map(d => d.month),
     datasets: [
-      { label:'Revenue After Bad Debt', data: bdMonths.map(d => d.revenue - d.badDebt), backgroundColor:'#2563b0', borderRadius:4, borderSkipped:false },
-      { label:'Bad Debt',               data: bdMonths.map(d => d.badDebt),             backgroundColor:'#fca5a5', borderRadius:4, borderSkipped:false },
+      { label:'Revenue After Bad Debt', data: bdRows.map(d => d.revenue - d.badDebt), backgroundColor:'#2563b0', borderRadius:4, borderSkipped:false },
+      { label:'Bad Debt',               data: bdRows.map(d => d.badDebt),             backgroundColor:'#fca5a5', borderRadius:4, borderSkipped:false },
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position:'top', labels:{font:{size:11}} },
+      legend: { position:'top', labels:{ font:{size:11} } },
       tooltip: {
         callbacks: {
-          label: c => ` ${c.dataset.label}: ${fmtD(c.raw)}`,
-          footer: items => {
-            const gross = items.reduce((s,i) => s + i.raw, 0);
-            return `Gross Revenue: ${fmtD(gross)}`;
-          }
+          label:  c    => ` ${c.dataset.label}: ${fmtD(c.raw)}`,
+          footer: items => `Gross Revenue: ${fmtD(items.reduce((s,i) => s + i.raw, 0))}`
         }
       }
     },
     scales: {
-      x: { stacked:true, ticks:{ font:{size:11} }, grid:{display:false} },
-      y: { stacked:true, min:74000, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{color:'#f0f0f0'} }
+      x: { stacked:true, ticks:{ font:{size:11} }, grid:{ display:false } },
+      y: { stacked:true, min:70000, ticks:{ callback: v => fmtK(v), font:{size:11} }, grid:{ color:'#f0f0f0' } }
     }
   }
 });
@@ -442,10 +433,10 @@ new Chart($('bdChart'), {
 const tbody = $('tableBody');
 
 data.forEach(d => {
-  const tr      = document.createElement('tr');
-  const isPeak  = d.revenue === maxRev;
+  const tr     = document.createElement('tr');
+  const isPeak = d.revenue === maxRev;
   if (isPeak) tr.classList.add('peak');
-  if (d.note)  tr.classList.add('note-row');
+  if (d.note) tr.classList.add('note-row');
 
   const yrClass = d.yr === 25 ? 'yr25' : d.yr === 26 ? 'yr26' : 'yr24';
   const yrLabel = d.yr === 25 ? '2025' : d.yr === 26 ? '2026' : '2024';
@@ -453,14 +444,13 @@ data.forEach(d => {
   const occClass = d.occPct === null ? '' :
                    d.occPct >= 63   ? 'high' :
                    d.occPct <= 57   ? 'low'  : 'mid';
-  const occCell = d.occPct !== null
+  const occCell  = d.occPct !== null
     ? `<div class="occ-wrap">
          <span class="occ-num">${fmtPct(d.occPct)}</span>
          <div class="bar-track"><div class="bar-fill ${occClass}" style="width:${d.occPct.toFixed(1)}%"></div></div>
        </div>`
     : na();
 
-  // YoY
   let yoyCell = na();
   if (yoyPrior[d.month] !== undefined) {
     const delta = (d.revenue - yoyPrior[d.month]) / yoyPrior[d.month] * 100;
@@ -468,18 +458,15 @@ data.forEach(d => {
     yoyCell     = `<span style="color:${col};font-weight:600">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}%</span>`;
   }
 
-  // Bad debt & net rev
-  const bdCell  = d.badDebt !== null
-    ? `<span class="bd-val">${fmtD(d.badDebt)}</span>` : na();
-  const netCell = d.badDebt !== null
-    ? fmtD(d.revenue - d.badDebt) : na();
+  const bdCell  = d.badDebt !== null ? `<span class="bd-val">${fmtD(d.badDebt)}</span>` : na();
+  const netCell = d.badDebt !== null ? fmtD(d.revenue - d.badDebt) : na();
 
   tr.innerHTML = `
     <td>
       <div class="period-cell">
         <strong>${d.month}</strong>
         ${isPeak ? '<span class="star" title="Highest revenue in dataset">★</span>' : ''}
-        ${d.note  ? '<span class="ast"  title="Revised 2026 format">*</span>'       : ''}
+        ${d.note  ? '<span class="ast"  title="Revised 2026 format — no occupancy data">*</span>' : ''}
         <span class="yr-pill ${yrClass}">${yrLabel}</span>
       </div>
     </td>
