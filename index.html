@@ -121,7 +121,7 @@
 <!-- Header -->
 <header>
   <h1>Regus Group — Business Center 05102</h1>
-  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy &amp; Revenue Analysis &nbsp;·&nbsp; Dec 2024 – Apr 2026</p>
+  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy &amp; Revenue Analysis &nbsp;·&nbsp; Dec 2024 – May 2026</p>
 </header>
 
 <!-- KPI Strip -->
@@ -144,17 +144,17 @@
     <span class="badge down">▼ Below 60% for 7 of 12 months</span>
   </div>
   <div class="kpi red">
-    <label>2026 Bad Debt (Feb – Apr)</label>
-    <div class="val">$8,657</div>
-    <div class="sub">Feb $2,674 · Mar $1,469 · Apr $4,515</div>
-    <span class="badge down">▲ Apr bad debt highest on record</span>
+    <label>2026 Bad Debt (Feb – May)</label>
+    <div class="val">$13,653</div>
+    <div class="sub">Feb $2,674 · Mar $1,469 · Apr $4,515 · May $4,997</div>
+    <span class="badge down">▲ Apr–May bad debt elevated</span>
   </div>
 </div>
 
 <!-- Revenue Bar -->
 <div class="charts-row">
   <div class="chart-card full">
-    <h2>Monthly Gross Revenue &nbsp;(Dec 2024 – Apr 2026)</h2>
+    <h2>Monthly Gross Revenue &nbsp;(Dec 2024 – May 2026)</h2>
     <div class="legend-dots">
       <span><span class="dot" style="background:#16a34a"></span>Peak (Feb-26 $83,684)</span>
       <span><span class="dot" style="background:#22c55e"></span>Strong ≥ $81K</span>
@@ -184,7 +184,7 @@
     <div class="chart-wrap"><canvas id="scatterChart"></canvas></div>
   </div>
   <div class="chart-card">
-    <h2>Year-over-Year Revenue (Jan – Apr)</h2>
+    <h2>Year-over-Year Revenue (Jan – May)</h2>
     <div class="chart-wrap"><canvas id="yoyChart"></canvas></div>
   </div>
 </div>
@@ -192,7 +192,7 @@
 <!-- Bad Debt trend -->
 <div class="charts-row">
   <div class="chart-card full">
-    <h2>2026 Gross Revenue vs. Revenue After Bad Debt &nbsp;(Feb – Apr 2026)</h2>
+    <h2>2026 Gross Revenue vs. Revenue After Bad Debt &nbsp;(Feb – May 2026)</h2>
     <div class="chart-wrap" style="height:200px"><canvas id="bdChart"></canvas></div>
   </div>
 </div>
@@ -259,6 +259,7 @@ const data = [
   { month:"Feb-26", revenue:83684.22,  badDebt:2673.63, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
   { month:"Mar-26", revenue:81537.50,  badDebt:1468.57, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
   { month:"Apr-26", revenue:79361.30,  badDebt:4514.52, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
+  { month:"May-26", revenue:80349.06,  badDebt:4996.53, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
 ];
 
 // YoY prior-year revenue by month label
@@ -267,6 +268,7 @@ const yoyPrior = {
   "Feb-26": 75625.71,
   "Mar-26": 81500.84,
   "Apr-26": 75738.46,
+  "May-26": 79122.67,
 };
 
 const maxRev  = Math.max(...data.map(d => d.revenue));
@@ -385,10 +387,10 @@ new Chart($('scatterChart'), {
 new Chart($('yoyChart'), {
   type: 'bar',
   data: {
-    labels: ['January', 'February', 'March', 'April'],
+    labels: ['January', 'February', 'March', 'April', 'May'],
     datasets: [
-      { label:'2025', data:[74023.56, 75625.71, 81500.84, 75738.46], backgroundColor:'#93c5fd', borderRadius:4 },
-      { label:'2026', data:[79945.58, 83684.22, 81537.50, 79361.30], backgroundColor:'#1a3a6b', borderRadius:4 },
+      { label:'2025', data:[74023.56, 75625.71, 81500.84, 75738.46, 79122.67], backgroundColor:'#93c5fd', borderRadius:4 },
+      { label:'2026', data:[79945.58, 83684.22, 81537.50, 79361.30, 80349.06], backgroundColor:'#1a3a6b', borderRadius:4 },
     ]
   },
   options: {
