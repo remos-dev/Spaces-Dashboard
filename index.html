@@ -99,7 +99,7 @@
 
 <header>
   <h1>Regus Group — Business Center 05102</h1>
-  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy &amp; Revenue Analysis &nbsp;·&nbsp; Dec 2024 – Jul 2026</p>
+  <p>555 SE Martin Luther King Blvd, Suite 105 / 200 / 300 &nbsp;·&nbsp; Vacancy &amp; Revenue Analysis &nbsp;·&nbsp; Dec 2024 – Sep 2026</p>
 </header>
 
 <div class="kpi-row">
@@ -110,9 +110,9 @@
   </div>
   <div class="kpi green">
     <label>Best Revenue Month — All Periods</label>
-    <div class="val">$86,309</div>
-    <div class="sub">July 2026 &nbsp;·&nbsp; +17.2% vs Jul-25</div>
-    <span class="badge up">▲ Prior peak: Feb-26 $83,684</span>
+    <div class="val">$87,555</div>
+    <div class="sub">September 2026 &nbsp;·&nbsp; +17.5% vs Sep-25</div>
+    <span class="badge up">▲ Prior peak: Jul-26 $86,309</span>
   </div>
   <div class="kpi orange">
     <label>Avg Vacancy Rate — FY 2025</label>
@@ -121,8 +121,8 @@
     <span class="badge down">▼ Below 60% for 7 of 12 months</span>
   </div>
   <div class="kpi teal">
-    <label>2026 Net Bad Debt (Feb – Jul)</label>
-    <div class="val">$11,771</div>
+    <label>2026 Net Bad Debt (Feb – Sep)</label>
+    <div class="val">$19,875</div>
     <div class="sub">Jun-26 recovery of $4,070 offset prior charges</div>
     <span class="badge neu">↺ Jun bad debt reversal noted</span>
   </div>
@@ -131,9 +131,9 @@
 <!-- Revenue Bar -->
 <div class="charts-row">
   <div class="chart-card full">
-    <h2>Monthly Gross Revenue &nbsp;(Dec 2024 – Jul 2026)</h2>
+    <h2>Monthly Gross Revenue &nbsp;(Dec 2024 – Sep 2026)</h2>
     <div class="legend-dots">
-      <span><span class="dot" style="background:#16a34a"></span>Peak (Jul-26 $86,309)</span>
+      <span><span class="dot" style="background:#16a34a"></span>Peak (Sep-26 $87,555)</span>
       <span><span class="dot" style="background:#22c55e"></span>Strong ≥ $81K</span>
       <span><span class="dot" style="background:#2563b0"></span>Normal</span>
       <span><span class="dot" style="background:#ef4444"></span>Weak &lt; $74K</span>
@@ -161,7 +161,7 @@
     <div class="chart-wrap"><canvas id="scatterChart"></canvas></div>
   </div>
   <div class="chart-card">
-    <h2>Year-over-Year Revenue (Jan – Jul)</h2>
+    <h2>Year-over-Year Revenue (Jan – Sep)</h2>
     <div class="chart-wrap"><canvas id="yoyChart"></canvas></div>
   </div>
 </div>
@@ -169,7 +169,7 @@
 <!-- Bad Debt -->
 <div class="charts-row">
   <div class="chart-card full">
-    <h2>2026 Gross Revenue vs. Net Revenue After Bad Debt &nbsp;(Feb – Jul 2026) &nbsp;·&nbsp; <span style="color:#16a34a">Jun-26 shows bad debt recovery (+$4,070)</span></h2>
+    <h2>2026 Gross Revenue vs. Net Revenue After Bad Debt &nbsp;(Feb – Sep 2026) &nbsp;·&nbsp; <span style="color:#16a34a">Jun-26 shows bad debt recovery (+$4,070)</span></h2>
     <div class="chart-wrap sm"><canvas id="bdChart"></canvas></div>
   </div>
 </div>
@@ -204,7 +204,7 @@
 </div>
 
 <div class="footnote">
-  <span class="star">★</span> Highest gross revenue in the dataset (Jul-26) &nbsp;|&nbsp;
+  <span class="star">★</span> Highest gross revenue in the dataset (Sep-26) &nbsp;|&nbsp;
   <span class="ast">*</span> 2026 reports (Feb onward) use revised format: bad debt adjustment and percentage-rent calculation included; occupancy data not reported &nbsp;|&nbsp;
   <span style="color:#16a34a;font-weight:600">↺</span> Jun-26 bad debt is negative (recovery of previously written-off amounts), increasing net revenue above gross &nbsp;|&nbsp;
   Capacity expanded <b>323 → 337</b> workstations (+4.3%) between Jan and Dec 2025
@@ -232,11 +232,13 @@ const data = [
   { month:"May-26", revenue:80349.06,  badDebt:4996.53,  total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
   { month:"Jun-26", revenue:81321.22,  badDebt:-4069.80, total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true, recovery:true },
   { month:"Jul-26", revenue:86309.26,  badDebt:2187.30,  total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
+  { month:"Aug-26", revenue:80396.33,  badDebt:3837.49,  total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
+  { month:"Sep-26", revenue:87555.26,  badDebt:4267.18,  total:null, occ:null, avail:null, occPct:null, vacPct:null, yr:26, note:true },
 ];
 
 const yoyPrior = {
   "Jan-26":74023.56, "Feb-26":75625.71, "Mar-26":81500.84,
-  "Apr-26":75738.46, "May-26":79122.67, "Jun-26":81199.91, "Jul-26":73622.45,
+  "Apr-26":75738.46, "May-26":79122.67, "Jun-26":81199.91, "Jul-26":73622.45, "Aug-26":72601.45, "Sep-26":74484.92,
 };
 
 const maxRev   = Math.max(...data.map(d => d.revenue));
@@ -299,10 +301,10 @@ new Chart($('scatterChart'),{type:'scatter',
 // 5. YoY bar
 new Chart($('yoyChart'),{type:'bar',
   data:{
-    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'],
     datasets:[
-      {label:'2025',data:[74023.56,75625.71,81500.84,75738.46,79122.67,81199.91,73622.45],backgroundColor:'#93c5fd',borderRadius:4},
-      {label:'2026',data:[79945.58,83684.22,81537.50,79361.30,80349.06,81321.22,86309.26],backgroundColor:'#1a3a6b',borderRadius:4},
+      {label:'2025',data:[74023.56,75625.71,81500.84,75738.46,79122.67,81199.91,73622.45,72601.45,74484.92],backgroundColor:'#93c5fd',borderRadius:4},
+      {label:'2026',data:[79945.58,83684.22,81537.50,79361.30,80349.06,81321.22,86309.26,80396.33,87555.26],backgroundColor:'#1a3a6b',borderRadius:4},
     ]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top',labels:{font:{size:11}}},tooltip:{callbacks:{label:c=>' '+fmtD(c.raw)}}},
